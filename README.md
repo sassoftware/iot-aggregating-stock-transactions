@@ -10,7 +10,7 @@ In this repository, you'll see how to aggregate stock transactions using SAS Eve
 
 **Editing with SAS ESP Studio**
 
-[![Editing with SAS ESP Studio](/images/modelViewingEditingTesting.png)](https://players.brightcove.net/3665946608001/default_default/index.html?videoId=6129515490001 "Editing with SAS ESP Studio")
+[![Editing with SAS ESP Studio](/images/modelViewingEditingTesting2.png)](https://players.brightcove.net/3665946608001/default_default/index.html?videoId=6129515490001 "Editing with SAS ESP Studio")
 
 ## Overview
 
