@@ -2,19 +2,27 @@
 
 <img src="https://img.shields.io/badge/Category-Tutorial-blue"> <img src="https://img.shields.io/badge/Sub--Category-Data Transformation-yellowgreen"> <img src="https://img.shields.io/badge/Difficulty-Beginner-yellow"> <img src="https://img.shields.io/badge/Analytical%20Method-N/A-brightgreen"> <img src="https://img.shields.io/badge/Updated-Jan%202020-orange">
 
-In this repository, you'll see how to aggregate stock transactions using SAS Event Stream Processing (ESP) 6.1. 
+In this repository, you'll see how to aggregate stock transactions using SAS Event Stream Processing (ESP) 6.2.
+
+## What You Will Learn
+
+* How to use ESP functions to aggregate values in the Aggregate window
+* How to execute a model on the ESP XML Server
+* How to subscribe to a window with the file/socket adapter command
+* How to subscribe to a window using ESP Streamviewer
+
 
 **Model Description, Editing, Executing, and Subscribing**
 
-[![Model Description, Editing, Executing, and Subscribing](/images/modelEditingExecutingSubscribing.png)](https://players.brightcove.net/3665946608001/default_default/index.html?videoId=6129513059001 "Model Description, Editing, Executing, and Subscribing")
+![](videos/orders2_62.mp4)  
 
 **Editing with SAS ESP Studio**
 
-[![Editing with SAS ESP Studio](/images/modelViewingEditingTesting2.png)](https://players.brightcove.net/3665946608001/default_default/index.html?videoId=6129515490001 "Editing with SAS ESP Studio")
+![](videos/orders_62.mp4)
 
 ## Overview
 
-The Aggregating Stock Transactions model is a simple XML model included in the examples that are installed with SAS Event Stream Processing (ESP) 6.1. It includes a Source window with an Input Data Connector and an Aggregate window to perform aggregate functions on the stream.
+The Aggregating Stock Transactions model is a simple XML model. It includes a Source window with an Input Data Connector and an Aggregate window to perform aggregate functions on the stream.
 
 ![](images/model_upload.png)
 
@@ -36,19 +44,12 @@ This repository includes the files required to execute the example and video dem
 
 ### Prerequisites
 
-SAS Event Stream Processing 6.1
+SAS Event Stream Processing 6.2
 
 ### Installation
 
-All required files are included in the SAS ESP Examples directory ($DFESP_HOME/examples). Create a server copy of the orders.xml and orders.csv files, and a local copy of orders.xml for editing.
+Download the `orders.xml` and `orders.csv` files from the [files](files) folder on this site to your local computer.
 
-1.	Copy the files from the SAS ESP Examples directory for this example ($DFESP_HOME/examples/xml/orders_xml) to a directory to which you have write access. Example:
-
-```bash
-cp $DFESP_HOME/examples/xml/orders_xml/*.* /home/sasdemo/orders
-```
-
-2.	Download the orders.xml file to your local computer so it can be easily edited.
 
 ### Running
 
@@ -58,7 +59,7 @@ The following are simple instructions for editing and executing the Aggregating 
 *  Start the Model on the XML Server
 *  Subscribe to the Output with a File/Socket Adapter
  
-For instructions on using SAS ESP Studio to edit the model and SAS ESP Streamviewer to subscribe to the output, refer to the [Orders_Instructions](https://gitlab.sas.com/IOT/accelerators/esp-examples/new-project/blob/master/Orders_Instrcutions.docx) document.
+For instructions on using SAS ESP Studio to edit the model and SAS ESP Streamviewer to subscribe to the output, refer to the [Instructions](doc/readme.md) document.
 
 **1. View and Edit the Model with a Text Editor**
 
@@ -136,15 +137,15 @@ where
 Use the following syntax to subscribe to the TotalVolume window using a file/socket adapter, and write the results to csv file totalvolume.out:
 
 ```bash
-$DFESP_HOME/bin/dfesp_fs_adapter -k sub -h dfESP://localhost:55555/orders_proj/orders_cq/TotalVolume?snapshot=true -t csv -f /*yourpath*/totalvolume.out
+$DFESP_HOME/bin/dfesp_fs_adapter -C type=sub,url=”dfESP://localhost:55555/orders_proj/orders_cq/TotalVolume?snapshot=true”,fstype=csv,fsname=/yourpath/totalvolume.out
 ```
 
 where
-*  `$DFESP_HOME/bin/dfesp_fs_adapter` is the command to start a file/socket adapter
-*  `-k sub` indicates we are subscribing to a window
-*  `-h dfESP://localhost:55555/orders_proj/orders_cq/TotalVolume?snapshot=true` specifies the URL of the TotalVolume window which includes the pubsub port, project name, continous query name, and name of the window
-*  `-t csv` specifies the file type as csv
-*  `-f /*yourpath*/totalvolume.out` specifies the full path to the file created
+*  `$DFESP_HOME/bin/dfesp_fs_adapter -C` is the command to start a file/socket adapter
+*  `type=sub` indicates we are subscribing to a window
+*  `url="dfESP://localhost:55555/orders_proj/orders_cq/TotalVolume?snapshot=true"` specifies the URL of the TotalVolume window which includes the pubsub port, project name, continous query name, and name of the window
+*  `fstype=csv` specifies the file type as csv
+*  `fsname=/*yourpath*/totalvolume.out` specifies the full path to the file created
 
 You can use the `tail -f` command to view totalvolume.out being updated.
 
@@ -154,11 +155,11 @@ tail -f /yourpath/totalvolume.out
 
 **4. Subscribe to the Output Using ESP Streamviewer**
 
-Refer to the [Orders_Instructions](https://gitlab.sas.com/IOT/accelerators/esp-examples/new-project/blob/master/Orders_Instrcutions.docx) document for detailed steps to subscribe to the output using SAS ESP Streamviewer.
+Refer to the [Instructions](doc/readme.md) document for detailed steps to subscribe to the output using SAS ESP Streamviewer.
 
 ## Contributing
 
-The Aggregating Stock Transactions Using SAS Event Stream Processing 6.1 is not open for external contributions.
+The Aggregating Stock Transactions Using SAS Event Stream Processing 6.2 is not open for external contributions.
 
 ## License
 
@@ -168,6 +169,6 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
 
 * [SAS Analytics for IoT](https://www.sas.com/en_us/software/analytics-iot.html)
 * [SAS Event Stream Processing](https://www.sas.com/en_us/software/event-stream-processing.html)
-* [SAS Event Stream Processing 6.1 Product Documentation](https://go.documentation.sas.com/?cdcId=espcdc&cdcVersion=6.1&docsetId=espov&docsetTarget=home.htm&locale=en)
+* [SAS Event Stream Processing 6.2 Product Documentation](https://go.documentation.sas.com/?cdcId=espcdc&cdcVersion=6.2&docsetId=espov&docsetTarget=home.htm&locale=en)
 * [SAS Communities](https://communities.sas.com/)
 
