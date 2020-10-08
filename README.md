@@ -14,11 +14,12 @@ In this repository, you'll see how to aggregate stock transactions using SAS Eve
 
 **Model Description, Editing, Executing, and Subscribing**
 
-![](videos/orders2_62.mp4)  
+[![Model Description, Editing, Executing, and Subscribing](/images/viewing_62.png)](https://players.brightcove.net/3665946608001/default_default/index.html?videoId=6129513059001 "Model Description, Editing, Executing, and Subscribing")
 
 **Editing with SAS ESP Studio**
 
-![](videos/orders_62.mp4)
+[![Editing with SAS ESP Studio](/images/studio_62.png)](https://players.brightcove.net/3665946608001/default_default/index.html?videoId=6129515490001 "Editing with SAS ESP Studio")
+
 
 ## Overview
 
